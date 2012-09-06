@@ -59,8 +59,9 @@ def parse_args(argv):
         nargs='*',
         help='list of workspace names')
     group = parser.add_mutually_exclusive_group()
-    group.add_argument('-o', '--output', 
-        help='to which output to move the given workspaces. e.g. HDMI1, VGA1, up, down')
+    default_output = 'up'
+    group.add_argument('-o', '--output', default=default_output,
+        help='to which output to move the given workspaces. e.g. HDMI1, VGA1, up, down. Defaults to \'{}\''.format(default_output))
     for output in 'up down left right'.split():
         group.add_argument('--{}'.format(output), dest='output', 
             action='store_const', const=output,
