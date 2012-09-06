@@ -21,7 +21,12 @@ import logging
 logging.basicConfig(level=logging.ERROR, format='%(levelname)s: %(message)s', stream=sys.stderr)
 log = logging
 
-import i3
+try:
+    import i3
+except ImportError:
+    print('You have to install i3-py [1] to use this.\n'
+    '[1] https://github.com/ziberna/i3-py\n', file=sys.stderr)
+    raise
 
 
 def main(args):
